@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import * as $ from 'jquery';
-import * as pup from 'puppeteer';
 
 @Component({
   selector: 'app-root',
@@ -12,21 +11,30 @@ import * as pup from 'puppeteer';
 export class AppComponent implements OnInit {
   myObservable;
   searchTerms;
+  searchTermsVolume;
   
   constructor(public httpClient: HttpClient) {
   }
   
   ngOnInit() {
     this.searchTerms = [];
-    // this.myObservable = this.httpClient.get(
-    //   'https://cors-anywhere.herokuapp.com/https://trends.google.com/trends/trendingsearches/daily?geo=US',
-    //   { responseType: 'text' }
-    //   );
-    // this.myObservable.subscribe( 
-    //   (res) => { 
-    //     // console.log($(res).find('ng-include > div > div').length);
-    //     console.log(res);
-    //   })
+    this.searchTermsVolume = [];
+    this.myObservable = this.httpClient.get(
+      'https://cors-anywhere.herokuapp.com/https://ahrefs.com/blog/top-google-searches/',
+      { responseType: 'text' }
+      );
+    this.myObservable.subscribe( 
+      (res) => { 
+        $(res).find('tbody > tr')
+        .each(
+          (index, element) => {
+            if (index < 100) {
+              this.searchTerms.push($(element).find('td:nth-child(2)').text());
+              this.searchTermsVolume.push($(element).find('td:nth-child(3)').text());
+            }
+          }
+        )
+      });
     
   }
 }
