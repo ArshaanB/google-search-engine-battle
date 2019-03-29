@@ -1,5 +1,6 @@
 <ul>
   <li *ngFor="let term of searchTerms; let i = index">
     {{ term }}
+    <img [src]="myURL(term)" alt="" style="width: 400px">
   </li>
 </ul>

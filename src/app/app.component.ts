@@ -28,13 +28,18 @@ export class AppComponent implements OnInit {
         $(res).find('tbody > tr')
         .each(
           (index, element) => {
-            if (index < 100) {
+            if (index < 10) {
               this.searchTerms.push($(element).find('td:nth-child(2)').text());
               this.searchTermsVolume.push($(element).find('td:nth-child(3)').text());
             }
           }
         )
       });
-    
+  }
+
+  myURL(term: String) {
+    // return ("https://source.unsplash.com/featured/?" + term);
+    return ("https://source.unsplash.com/1600x900/?" + term);
+    // https://www.flickr.com/services/api/flickr.photos.search.html
   }
 }
