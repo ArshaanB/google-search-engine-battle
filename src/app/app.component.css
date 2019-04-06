@@ -1,0 +1,34 @@
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+}
+header > button {
+  padding: 0.70rem 2.2rem;
+}
+
+.terms {
+  display: flex;
+  justify-content: space-around;
+}
+
+#score {
+  display: flex;
+  justify-content: center;
+}
+
+#score p {
+  padding: 0 5rem;
+}
+
+#decision {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+}
+.choices button {
+  margin: 0 2rem;
+  padding: 0.70rem 2.2rem;
+}

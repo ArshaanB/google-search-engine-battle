@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
   term2: {name: string, volume: number};
   winningTerm = "";
   playButtonFlag = true;
+  showScore = false;
   score = 0;
   lives = 3;
   
@@ -62,6 +63,7 @@ export class AppComponent implements OnInit {
     } else {
       this.winningTerm = this.term2.name;
     }
+    this.showScore = false;
   }
 
   onAnswer(answer: number) {
@@ -75,5 +77,15 @@ export class AppComponent implements OnInit {
       this.lives--;
     }
     this.populateTerms();
+    if (this.lives == 0) {
+      this.playButtonFlag = true;
+      this.showScore = true;
+    }
+  }
+
+  playGame() {
+    this.populateTerms();
+    this.lives = 3;
+    this.score = 0;
   }
 }
