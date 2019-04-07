@@ -88,4 +88,10 @@ export class AppComponent implements OnInit {
     this.lives = 3;
     this.score = 0;
   }
+
+  endscreenMessage() {
+    if (this.score <= 5) return "Meh, I know you can do better than that.";
+    else if (this.score <= 10) return "That's pretty good, but even my grandma got 9.";
+    else return "Dang, you've got skill, you single?";
+  }
 }

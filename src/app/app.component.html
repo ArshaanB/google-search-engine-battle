@@ -1,23 +1,33 @@
 <div class="container">
-  <header>
-    <h1>Search Engine Battle</h1>
-    <button type="button" class="btn btn-primary" (click)="playGame()" *ngIf="playButtonFlag">Play!</button>
-  </header>
+  <nav>
+    <h3><span class="googleBlue">Search</span><span class="googleRed">Engine</span><span class="googleYellow">Battle</span></h3>
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Login</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="play">
+      <button type="button" class="btn btn-primary" (click)="playGame()" *ngIf="playButtonFlag">Play!</button>
+  </div>
 
   <div *ngIf="!playButtonFlag">
     <div id="score">
-      <p>Score: {{ score }}</p>
-      <p>Lives: {{ lives }}</p>
+      <p><span class="border border-success">Score: {{ score }}</span></p>
+      <p><span class="border border-warning">Lives: {{ lives }}</span></p>
     </div>
 
     <div class="terms">
       <div id="term1">
         <h2> {{ term1.name }} </h2>
-        <img [src]="myURL(1)" alt="" style="width: 400px">
+        <img [src]="myURL(1)" alt="">
       </div>
       <div id="term2">
         <h2> {{ term2.name }} </h2>
-        <img [src]="myURL(2)" alt="" style="width: 400px">
+        <img [src]="myURL(2)" alt="">
       </div>
     </div>
     <hr>
@@ -28,10 +38,12 @@
         <button type="button" class="btn btn-secondary" (click)="onAnswer(2)">{{ term2.name }}</button>
       </div>
     </div>
+    <hr>
   </div>
 
-  <div *ngIf="showScore">
-    <h2>Your score was {{ score }}. Good job!</h2>
+  <div class="endscreen" *ngIf="showScore">
+    <h2>Score: {{ score }}</h2>
+    <h3 [innerHTML]="endscreenMessage()"></h3>
     <h3>Please click the button above to play again.</h3>
   </div>
 </div>

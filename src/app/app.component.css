@@ -1,27 +1,55 @@
-header {
+nav {
+  display: flex;
+  flex-direction: horizontal;
+  margin-top: 1rem;
+  font-family: Helvetica, Arial, sans-serif;
+}
+nav > h3 {
+  flex: 1;
+}
+nav > ul {
+  flex: 1;
+}
+
+.play {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
-  /* Added below as a test.*/
-  margin-top: 1rem;
 }
-header > button {
+.play > button {
+  margin-top: 1rem;
   padding: 0.70rem 2.2rem;
+  width: 60%;
+  font-size: 1.25rem;
 }
 
 .terms {
   display: flex;
   justify-content: space-around;
 }
+#term1, #term2 {
+  text-align: center;
+}
+.terms img {
+  border-radius: 1rem 1rem;
+  width: 400px;
+}
 
 #score {
   display: flex;
   justify-content: center;
 }
-
 #score p {
-  padding: 0 5rem;
+  padding: 0 1.5rem;
+  font-size: 1.5rem;
+}
+span.border.border-success{
+  border-radius: 1rem 1rem;
+  padding: 0.5rem 1rem;
+}
+span.border.border-warning{
+  border-radius: 1rem 1rem;
+  padding: 0.5rem 1rem;
 }
 
 #decision {
@@ -30,7 +58,44 @@ header > button {
   align-items: center;
   /* justify-content: center; */
 }
+#decision p {
+  text-align: center;
+}
 .choices button {
   margin: 0 2rem;
   padding: 0.70rem 2.2rem;
+}
+
+.endscreen {
+  margin-top: 3rem;
+}
+
+/* Universal Styling */
+.googleBlue { color: #4285F4; }
+.googleRed { color: #DB4437; }
+.googleYellow { color: #F4B400; }
+
+@media(max-width: 992px) {
+  .play { margin-bottom: 1rem; }
+  .terms { flex-direction: column; }
+}
+
+@media(max-width: 480px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+  .choices { 
+    display: flex;
+    flex-direction: column;
+  }
+  .choices button {
+    margin: 0.5rem 0rem;
+  }
+}
+
+@media(max-width: 420px) {
+  .terms img {
+    width: 90%;
+  }
 }
