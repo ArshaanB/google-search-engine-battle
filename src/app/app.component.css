@@ -8,96 +8,22 @@ nav {
 nav > h3 {
   flex: 1;
 }
+nav h3 a:hover {
+  text-decoration: none;
+}
 nav > ul {
   flex: 1;
 }
 
-/* play section */
-.play {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.play > button {
-  margin-top: 1rem;
-  padding: 0.70rem 2.2rem;
-  width: 60%;
-  font-size: 1.25rem;
-}
-
-/* game section */
-.game .searchterms {
-  display: flex;
-  justify-content: space-around;
-}
-.game .searchterms #term1,
-.game .searchterms #term2 {
-  text-align: center;
-}
-.game .searchterms img {
-  border-radius: 1rem 1rem;
-  width: 400px;
-}
-.game .score {
-  display: flex;
-  justify-content: center;
-}
-.game .score p {
-  padding: 0 1.5rem;
-  font-size: 1.5rem;
-}
-.game .score span.border.border-success {
-  border-radius: 1rem 1rem;
-  padding: 0.5rem 1rem;
-}
-.game .score span.border.border-warning {
-  border-radius: 1rem 1rem;
-  padding: 0.5rem 1rem;
-}
-.game .decision {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* justify-content: center; */
-}
-.game .decision p {
-  text-align: center;
-}
-.game .decision .choices button {
-  margin: 0 2rem;
-  padding: 0.70rem 2.2rem;
-}
-
-/* endscreen section */
-.endscreen {
-  margin-top: 3rem;
+/* Media Queries */
+@media(max-width: 480px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 /* Utilities Styling */
 .googleBlue { color: #4285F4; }
 .googleRed { color: #DB4437; }
 .googleYellow { color: #F4B400; }
-
-/* Media Queries */
-@media(max-width: 992px) {
-  .play { margin-bottom: 1rem; }
-  .game .searchterms { flex-direction: column; }
-}
-@media(max-width: 480px) {
-  nav {
-    flex-direction: column;
-    align-items: center;
-  }
-  .choices { 
-    display: flex;
-    flex-direction: column;
-  }
-  .choices button {
-    margin: 0.5rem 0rem;
-  }
-}
-@media(max-width: 420px) {
-  .game .searchterms img {
-    width: 90%;
-  }
-}

@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="play">
+        <button type="button" class="btn btn-primary" (click)="playGame()" *ngIf="showPlayButtonFlag">Play!</button>
+    </div>
+  
+    <div class="game" *ngIf="!showPlayButtonFlag">
+      <div class="score">
+        <p><span class="border border-success">Score: {{ score }}</span></p>
+        <p><span class="border border-warning">Lives: {{ lives }}</span></p>
+      </div>
+  
+      <div class="searchterms">
+        <div id="term1">
+          <h2> {{ term1.name }} </h2>
+          <img [src]="myURL(1)">
+        </div>
+        <div id="term2">
+          <h2> {{ term2.name }} </h2>
+          <img [src]="myURL(2)">
+        </div>
+      </div>
+  
+      <hr>
+  
+      <div class="decision">
+        <p>Which do you think has a higher search volume?</p>
+        <div class="choices">
+          <button type="button" class="btn btn-secondary" (click)="onAnswer(1)">{{ term1.name }}</button>
+          <button type="button" class="btn btn-secondary" (click)="onAnswer(2)">{{ term2.name }}</button>
+        </div>
+      </div>
+  
+      <hr>
+    </div>
+  
+    <div class="endscreen" *ngIf="showScoreFlag">
+      <h2>Score: {{ score }}</h2>
+      <h3 [innerHTML]="endscreenMessage()"></h3>
+      <hr>
+      <h3>Click the "Play!" button above to play again.</h3>
+    </div>
+  </div>
