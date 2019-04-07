@@ -81,6 +81,7 @@ export class AppComponent implements OnInit {
       this.playButtonFlag = true;
       this.showScore = true;
     }
+    window.scroll(0,0);
   }
 
   playGame() {
