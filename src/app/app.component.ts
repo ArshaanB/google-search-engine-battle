@@ -16,8 +16,8 @@ export class AppComponent implements OnInit {
   term1: {name: string, volume: number};
   term2: {name: string, volume: number};
   winningTerm = "";
-  playButtonFlag = true;
-  showScore = false;
+  showPlayButtonFlag = true;
+  showScoreFlag = false;
   score = 0;
   lives = 3;
   
@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
   }
   
   ngOnInit() {
-    // Grabs all search data and stores locally.
+    // Acquires all search data and stores locally.
     this.myObservable = this.httpClient.get(
       'https://cors-anywhere.herokuapp.com/https://ahrefs.com/blog/top-google-searches/',
       { responseType: 'text' }
@@ -44,31 +44,37 @@ export class AppComponent implements OnInit {
         )
       });
   }
-  // Grabs the URL for the img src attribute.
+
+  // Produces the URL for the img src attribute.
   myURL(term: number) {
     let myTerm = this.term1;
     if (term === 2) myTerm = this.term2;
     return ("https://source.unsplash.com/1600x900/?" + myTerm.name);
-    // Keep below for if primary image source fails. Bing is also another complete alternative.
+    // Keep below for if primary image source fails. Bing is also another 
+    // complete alternative.
     // return ("https://source.unsplash.com/featured/?" + term);
   }
 
-  // 
+  // Randomly picks 2 terms from our array.
   populateTerms() {
     let termIndex1 = Math.floor(Math.random() * 50);
     let termIndex2 = Math.floor(Math.random() * 50);
     this.term1 = {name: this.searchTerms[termIndex1], volume: this.searchTermsVolume[termIndex1]};
     this.term2 = {name: this.searchTerms[termIndex2], volume: this.searchTermsVolume[termIndex2]};
-    
-    this.playButtonFlag = false;
+
     if (this.term1.volume > this.term2.volume) {
       this.winningTerm = this.term1.name;
     } else {
       this.winningTerm = this.term2.name;
     }
-    this.showScore = false;
   }
 
+  togglePlayButtonFlag() {
+    this.showPlayButtonFlag = !this.showPlayButtonFlag;
+  }
+
+  // Ensures score correctly reflects choices made by user. If the game is over 
+  // (since lives hits 0) show correct screen.
   onAnswer(answer: number) {
     if ((answer == 1) && (this.winningTerm == this.term1.name)) {
       this.score++;
@@ -81,18 +87,24 @@ export class AppComponent implements OnInit {
     }
     this.populateTerms();
     if (this.lives == 0) {
-      this.playButtonFlag = true;
-      this.showScore = true;
+      this.togglePlayButtonFlag();
+      this.showScoreFlag = true;
     }
+    // Especially useful on smaller devices, brings the screen back to the top 
+    // thus saving the user time wasted in scrolling.
     window.scroll(0,0);
   }
 
+  // Used at the beginning and in order to re-play the game.
   playGame() {
     this.populateTerms();
     this.lives = 3;
     this.score = 0;
+    this.togglePlayButtonFlag();
+    this.showScoreFlag = false;
   }
 
+  // Small variations in messages as per user's end score.
   endscreenMessage() {
     if (this.score <= 5) return "Meh, I know you can do better than that.";
     else if (this.score <= 10) return "That's pretty good, but even my grandma got 9.";

@@ -15,10 +15,10 @@
   </nav>
 
   <div class="play">
-      <button type="button" class="btn btn-primary" (click)="playGame()" *ngIf="playButtonFlag">Play!</button>
+      <button type="button" class="btn btn-primary" (click)="playGame()" *ngIf="showPlayButtonFlag">Play!</button>
   </div>
 
-  <div class="game" *ngIf="!playButtonFlag">
+  <div class="game" *ngIf="!showPlayButtonFlag">
     <div class="score">
       <p><span class="border border-success">Score: {{ score }}</span></p>
       <p><span class="border border-warning">Lives: {{ lives }}</span></p>
@@ -48,7 +48,7 @@
     <hr>
   </div>
 
-  <div class="endscreen" *ngIf="showScore">
+  <div class="endscreen" *ngIf="showScoreFlag">
     <h2>Score: {{ score }}</h2>
     <h3 [innerHTML]="endscreenMessage()"></h3>
     <hr>
