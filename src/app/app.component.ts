@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { AuthenticationService } from './authentication.service';
 import * as $ from 'jquery';
 
 @Component({
@@ -10,8 +11,8 @@ import * as $ from 'jquery';
 })
 export class AppComponent implements OnInit {
   myObservable;
-  searchTerms;
-  searchTermsVolume;
+  searchTerms = [];
+  searchTermsVolume = [];
   term1: {name: string, volume: number};
   term2: {name: string, volume: number};
   winningTerm = "";
@@ -20,12 +21,12 @@ export class AppComponent implements OnInit {
   score = 0;
   lives = 3;
   
-  constructor(public httpClient: HttpClient) {
+  constructor(public httpClient: HttpClient, 
+              public authenticationServide: AuthenticationService) {
   }
   
   ngOnInit() {
-    this.searchTerms = [];
-    this.searchTermsVolume = [];
+    // Grabs all search data and stores locally.
     this.myObservable = this.httpClient.get(
       'https://cors-anywhere.herokuapp.com/https://ahrefs.com/blog/top-google-searches/',
       { responseType: 'text' }
@@ -35,7 +36,7 @@ export class AppComponent implements OnInit {
         $(res).find('tbody > tr')
         .each(
           (index, element) => {
-            if (index < 50) {
+            if (index < 99) {
               this.searchTerms.push($(element).find('td:nth-child(2)').text());
               this.searchTermsVolume.push($(element).find('td:nth-child(3)').text());
             }
@@ -43,20 +44,22 @@ export class AppComponent implements OnInit {
         )
       });
   }
-
+  // Grabs the URL for the img src attribute.
   myURL(term: number) {
     let myTerm = this.term1;
     if (term === 2) myTerm = this.term2;
     return ("https://source.unsplash.com/1600x900/?" + myTerm.name);
+    // Keep below for if primary image source fails. Bing is also another complete alternative.
     // return ("https://source.unsplash.com/featured/?" + term);
-    // https://www.flickr.com/services/api/flickr.photos.search.html
   }
 
+  // 
   populateTerms() {
     let termIndex1 = Math.floor(Math.random() * 50);
     let termIndex2 = Math.floor(Math.random() * 50);
     this.term1 = {name: this.searchTerms[termIndex1], volume: this.searchTermsVolume[termIndex1]};
     this.term2 = {name: this.searchTerms[termIndex2], volume: this.searchTermsVolume[termIndex2]};
+    
     this.playButtonFlag = false;
     if (this.term1.volume > this.term2.volume) {
       this.winningTerm = this.term1.name;

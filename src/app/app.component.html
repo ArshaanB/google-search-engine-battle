@@ -1,6 +1,9 @@
 <div class="container">
   <nav>
-    <h3><span class="googleBlue">Search</span><span class="googleRed">Engine</span><span class="googleYellow">Battle</span></h3>
+    <h3>
+      <span class="googleBlue">Search</span>
+      <span class="googleRed">Engine</span>
+      <span class="googleYellow">Battle</span></h3>
     <ul class="nav justify-content-end">
       <li class="nav-item">
         <a class="nav-link" href="#">Register</a>
@@ -10,34 +13,38 @@
       </li>
     </ul>
   </nav>
+
   <div class="play">
       <button type="button" class="btn btn-primary" (click)="playGame()" *ngIf="playButtonFlag">Play!</button>
   </div>
 
-  <div *ngIf="!playButtonFlag">
-    <div id="score">
+  <div class="game" *ngIf="!playButtonFlag">
+    <div class="score">
       <p><span class="border border-success">Score: {{ score }}</span></p>
       <p><span class="border border-warning">Lives: {{ lives }}</span></p>
     </div>
 
-    <div class="terms">
+    <div class="searchterms">
       <div id="term1">
         <h2> {{ term1.name }} </h2>
-        <img [src]="myURL(1)" alt="">
+        <img [src]="myURL(1)">
       </div>
       <div id="term2">
         <h2> {{ term2.name }} </h2>
-        <img [src]="myURL(2)" alt="">
+        <img [src]="myURL(2)">
       </div>
     </div>
+
     <hr>
-    <div id="decision">
+
+    <div class="decision">
       <p>Which do you think has a higher search volume?</p>
       <div class="choices">
         <button type="button" class="btn btn-secondary" (click)="onAnswer(1)">{{ term1.name }}</button>
         <button type="button" class="btn btn-secondary" (click)="onAnswer(2)">{{ term2.name }}</button>
       </div>
     </div>
+
     <hr>
   </div>
 

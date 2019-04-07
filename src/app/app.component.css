@@ -1,3 +1,4 @@
+/* nav section */
 nav {
   display: flex;
   flex-direction: horizontal;
@@ -11,6 +12,7 @@ nav > ul {
   flex: 1;
 }
 
+/* play section */
 .play {
   display: flex;
   flex-direction: column;
@@ -23,63 +25,64 @@ nav > ul {
   font-size: 1.25rem;
 }
 
-.terms {
+/* game section */
+.game .searchterms {
   display: flex;
   justify-content: space-around;
 }
-#term1, #term2 {
+.game .searchterms #term1,
+.game .searchterms #term2 {
   text-align: center;
 }
-.terms img {
+.game .searchterms img {
   border-radius: 1rem 1rem;
   width: 400px;
 }
-
-#score {
+.game .score {
   display: flex;
   justify-content: center;
 }
-#score p {
+.game .score p {
   padding: 0 1.5rem;
   font-size: 1.5rem;
 }
-span.border.border-success{
+.game .score span.border.border-success {
   border-radius: 1rem 1rem;
   padding: 0.5rem 1rem;
 }
-span.border.border-warning{
+.game .score span.border.border-warning {
   border-radius: 1rem 1rem;
   padding: 0.5rem 1rem;
 }
-
-#decision {
+.game .decision {
   display: flex;
   flex-direction: column;
   align-items: center;
   /* justify-content: center; */
 }
-#decision p {
+.game .decision p {
   text-align: center;
 }
-.choices button {
+.game .decision .choices button {
   margin: 0 2rem;
   padding: 0.70rem 2.2rem;
 }
 
+/* endscreen section */
 .endscreen {
   margin-top: 3rem;
 }
 
-/* Universal Styling */
+/* Utilities Styling */
 .googleBlue { color: #4285F4; }
 .googleRed { color: #DB4437; }
 .googleYellow { color: #F4B400; }
 
+/* Media Queries */
 @media(max-width: 992px) {
   .play { margin-bottom: 1rem; }
-  .terms { flex-direction: column; }
+  .game .searchterms { flex-direction: column; }
 }
-
 @media(max-width: 480px) {
   nav {
     flex-direction: column;
@@ -93,9 +96,8 @@ span.border.border-warning{
     margin: 0.5rem 0rem;
   }
 }
-
 @media(max-width: 420px) {
-  .terms img {
+  .game .searchterms img {
     width: 90%;
   }
 }
