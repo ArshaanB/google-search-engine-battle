@@ -51,9 +51,38 @@ export class HomeComponent implements OnInit {
   }
 
   // Produces the URL for the img src attribute.
-  myURL(term: number) {
+  myURL(term: number, t: HTMLInputElement) {
     let myTerm = this.term1;
     if (term === 2) myTerm = this.term2;
+
+    // Working solution below, but a problem with Angular calling myURL 
+    // infinitely is stopping me from using it.
+    // fetch("https://source.unsplash.com/1600x900/?" + myTerm.name)
+    //   .then(res => {
+    //   if (res.url) {
+    //     if(res.url == "https://images.unsplash.com/source-404?fit=crop&fm=jpg&h=800&q=60&w=1200") {
+    //       t.src = "https://source.unsplash.com/random/1600x900";
+    //     }
+    //   }
+    // });
+
+    if (myTerm.name == "hotmail" ||
+        myTerm.name == "roblox" ||
+        myTerm.name == "zillow" || 
+        myTerm.name == "indeed" ||
+        myTerm.name == "ebay" ||
+        myTerm.name == "yahoo" ||
+        myTerm.name == "xfinity" ||
+        myTerm.name == "walgreens" ||
+        myTerm.name == "traductor" ||
+        myTerm.name == "pof" ||
+        myTerm.name == "123movies" ||
+        myTerm.name == "mapquest" ||
+        myTerm.name == "aol" ||
+        myTerm.name == "gamestop" ||
+        myTerm.name == "kohls") {
+          return "https://source.unsplash.com/random/1600x900";
+    }
     return ("https://source.unsplash.com/1600x900/?" + myTerm.name);
     // Keep below for if primary image source fails. Bing is also another 
     // complete alternative.
@@ -62,8 +91,8 @@ export class HomeComponent implements OnInit {
 
   // Randomly picks 2 terms from our array.
   populateTerms() {
-    let termIndex1 = Math.floor(Math.random() * 50);
-    let termIndex2 = Math.floor(Math.random() * 50);
+    let termIndex1 = Math.floor(Math.random() * 99);
+    let termIndex2 = Math.floor(Math.random() * 99);
     this.term1 = {name: this.searchTerms[termIndex1], volume: this.searchTermsVolume[termIndex1]};
     this.term2 = {name: this.searchTerms[termIndex2], volume: this.searchTermsVolume[termIndex2]};
 

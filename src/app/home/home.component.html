@@ -33,11 +33,11 @@
     <div class="searchterms">
       <div id="term1">
         <h2>{{ term1.name }}</h2>
-        <img [src]="myURL(1)" />
+        <img [src]="myURL(1, t)" #t/>
       </div>
       <div id="term2">
         <h2>{{ term2.name }}</h2>
-        <img [src]="myURL(2)" />
+        <img [src]="myURL(2, u)" #u/>
       </div>
     </div>
 

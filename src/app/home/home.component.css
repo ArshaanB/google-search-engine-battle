@@ -23,6 +23,7 @@
 .game .searchterms img {
   border-radius: 1rem 1rem;
   width: 400px;
+  max-height: 400px;
 }
 .game .score {
   display: flex;
@@ -96,5 +97,6 @@
 @media(max-width: 420px) {
   .game .searchterms img {
     width: 90%;
+    max-height: 400px;
   }
 }
