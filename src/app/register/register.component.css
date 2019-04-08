@@ -12,3 +12,9 @@ form {
 div.alert.alert-success {
   margin-top: 2rem;
 }
+
+@media(max-width: 600px) {
+  form {
+    width: 75%;
+  }
+}

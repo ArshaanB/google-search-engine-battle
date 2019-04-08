@@ -8,3 +8,9 @@ form {
   margin-top: 2rem;
   width: 50%;
 }
+
+@media(max-width: 600px) {
+  form {
+    width: 75%;
+  }
+}

@@ -85,11 +85,11 @@
     flex-direction: column;
     align-items: center;
   }
-  .choices { 
+  .decision div.choices { 
     display: flex;
     flex-direction: column;
   }
-  .choices button {
+  .game .decision .choices button {
     margin: 0.5rem 0rem;
   }
 }
