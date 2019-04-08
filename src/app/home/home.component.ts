@@ -80,6 +80,8 @@ export class HomeComponent implements OnInit {
         myTerm.name == "mapquest" ||
         myTerm.name == "aol" ||
         myTerm.name == "gamestop" ||
+        myTerm.name == "groupon" ||
+        myTerm.name == "bing" ||
         myTerm.name == "kohls") {
           return "https://source.unsplash.com/random/1600x900";
     }
