@@ -93,6 +93,14 @@ export class HomeComponent implements OnInit {
   populateTerms() {
     let termIndex1 = Math.floor(Math.random() * 99);
     let termIndex2 = Math.floor(Math.random() * 99);
+    while (true) {
+      if (termIndex2 == termIndex1) {
+        termIndex2 = Math.floor(Math.random() * 99);
+      }
+      else {
+        break;
+      }
+    }
     this.term1 = {name: this.searchTerms[termIndex1], volume: this.searchTermsVolume[termIndex1]};
     this.term2 = {name: this.searchTerms[termIndex2], volume: this.searchTermsVolume[termIndex2]};
 

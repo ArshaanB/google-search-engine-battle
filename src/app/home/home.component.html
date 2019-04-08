@@ -3,7 +3,7 @@
     <h2>Score: {{ score }}</h2>
     <h3 [innerHTML]="endscreenMessage()"></h3>
     <br />
-    <h3>
+    <h3 *ngIf="showScoreFlag && isUserLoggedIn()">
       See where you stack up on the leaderboard! Submit your score with a
       personal handle below.
     </h3>
