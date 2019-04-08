@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { AuthenticationService } from '../authentication.service';
+
 import * as $ from 'jquery';
 
 @Component({
@@ -11,6 +14,7 @@ import * as $ from 'jquery';
 })
 export class HomeComponent implements OnInit {
   myObservable;
+  scoreSubmitObservable;
   searchTerms = [];
   searchTermsVolume = [];
   term1: {name: string, volume: number};
@@ -22,7 +26,8 @@ export class HomeComponent implements OnInit {
   lives = 3;
   
   constructor(public httpClient: HttpClient, 
-              public authenticationServide: AuthenticationService) {
+              public authenticationService: AuthenticationService,
+              public router: Router) {
   }
   
   ngOnInit() {
@@ -109,5 +114,18 @@ export class HomeComponent implements OnInit {
     if (this.score <= 5) return "Meh, I know you can do better than that.";
     else if (this.score <= 10) return "That's pretty good, but even my grandma got 9.";
     else return "Dang, you've got skill, you single?";
+  }
+
+  isUserLoggedIn() {
+    return this.authenticationService.userLoggedIn();
+  }
+
+  onSubmit(form: NgForm) {
+    console.log(form.value);
+    this.scoreSubmitObservable = this.authenticationService.sendData(form.value.username, this.score);
+    this.scoreSubmitObservable.subscribe( () => { console.log("success") } );
+    setTimeout(() => {
+      this.router.navigate(["/leaderboard"]);
+    }, 500);
   }
 }

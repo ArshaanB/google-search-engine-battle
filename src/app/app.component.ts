@@ -1,8 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 
 import { AuthenticationService } from './authentication.service';
-import { Router } from '@angular/router';
+
 import * as firebase from "firebase";
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: "app-root",
@@ -11,7 +12,8 @@ import * as firebase from "firebase";
 })
 export class AppComponent implements OnInit {
   
-  constructor(public authenticationService: AuthenticationService) {}
+  constructor(public authenticationService: AuthenticationService,
+              public httpClient: HttpClient) {}
 
   ngOnInit() {
     // Initialize Firebase

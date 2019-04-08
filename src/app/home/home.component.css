@@ -59,6 +59,22 @@
   margin-top: 3rem;
 }
 
+/* submitScore section */
+.submitScore {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.submitScore form div.input-group input {
+  margin-right: 1rem;
+}
+
+/* scoreAlert section */
+.scoreAlert {
+  /* margin-top: 2rem; */
+}
+
 /* Media Queries */
 @media(max-width: 992px) {
   .play { margin-bottom: 1rem; }

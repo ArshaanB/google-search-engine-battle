@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="display-4">Leaderboard</div>
+  <div *ngIf="dataRetreived">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Handle</th>
+          <th scope="col">Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of leaderboardArray; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ row.name }}</td>
+          <td>{{ row.score }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

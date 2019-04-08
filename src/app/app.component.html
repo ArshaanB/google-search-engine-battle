@@ -15,9 +15,15 @@
         <a class="nav-link text-success" routerLink="/login">Login</a>
       </li>
       <li class="nav-item" *ngIf="userLoggedIn()">
-          <a class="nav-link text-danger" routerLink="/" (click)="logout()">Logout</a>
+        <a class="nav-link text-danger" routerLink="/" (click)="logout()"
+          >Logout</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/leaderboard">Leaderboard!</a>
       </li>
     </ul>
   </nav>
 </div>
+
 <router-outlet></router-outlet>
