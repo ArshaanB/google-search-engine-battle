@@ -26,6 +26,7 @@
         id="exampleInputPassword1"
         placeholder="Password"
         name="password"
+        minlength="6"
         ngModel
         required
         password
@@ -36,7 +37,7 @@
     </button>
   </form>
 
-  <div class="alert alert-success" role="alert" *ngIf="showSuccessMessage">
+  <div class="alert alert-success mt-3" role="alert" *ngIf="showSuccessMessage">
     Thanks for registering! Now please login above.
   </div>
 </div>

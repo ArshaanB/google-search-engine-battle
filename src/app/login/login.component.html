@@ -26,6 +26,7 @@
         id="exampleInputPassword1"
         placeholder="Password"
         name="password"
+        minlength="6"
         ngModel
         required
         password
@@ -35,4 +36,7 @@
       Login
     </button>
   </form>
+  <div *ngIf="loginFailFlag" class="alert alert-danger mt-3" role="alert">
+    You entered the wrong Username, Password combination.
+  </div>
 </div>

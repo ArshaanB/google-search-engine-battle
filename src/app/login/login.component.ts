@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  loginFailFlag = false;
 
   constructor(public authenticationService: AuthenticationService,
               public router: Router) { }
@@ -18,8 +19,14 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    this.authenticationService.loginUser(form.value.email, form.value.password);
-    this.router.navigate(['']);
+    let msg = this.authenticationService.loginUser(form.value.email, form.value.password);
+    
+    msg.subscribe((val)=>{
+      if (val == 0) {
+        this.router.navigate(['']);
+      } else {
+        this.loginFailFlag = true;
+      }
+    });
   }
-
 }

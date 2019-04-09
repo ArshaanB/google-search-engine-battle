@@ -75,11 +75,12 @@
               placeholder="Tim Apple"
               name="username"
               ngModel
+              required
             />
           </div>
         </div>
         <div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
         </div>
       </div>
     </form>

@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
 import * as firebase from "firebase";
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: "root"
@@ -21,17 +22,25 @@ export class AuthenticationService {
   }
 
   loginUser(email, password) {
+    let msg = new Subject();
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
+      .catch(()=>{
+        // signifies problem
+        msg.next(1);
+      })
       .then(() => {
         firebase
           .auth()
           .currentUser.getIdToken()
           .then(val => {
             this.usersToken = val;
+            // signifies no problem
+            msg.next(0);
           });
       });
+    return msg;
   }
 
   logoutUser() {
