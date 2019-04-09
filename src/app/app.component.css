@@ -1,4 +1,4 @@
-/* nav section */
+/* nav section
 nav {
   display: flex;
   flex-direction: horizontal;
@@ -14,6 +14,7 @@ nav h3 a:hover {
 nav > ul {
   flex: 1;
 }
+*/
 
 /* Media Queries */
 @media(max-width: 480px) {
@@ -22,6 +23,11 @@ nav > ul {
     align-items: center;
   }
 }
+/* @media(max-width: 992px) {
+  nav {
+    margin-bottom: 0rem;
+  }
+} */
 
 /* Utilities Styling */
 .googleBlue { color: #4285F4; }
