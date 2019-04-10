@@ -1,3 +1,22 @@
+.jumbotron {
+  padding: 2.5rem 1rem;
+}
+
+.endscreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: -3rem;
+}
+.endscreen button {
+  padding: 0.8rem 1.6rem;
+  font-size: 1.6rem;
+}
+.endscreen button:hover {
+  cursor: default;
+  background-color: #343a40;
+}
+
 /* play section */
 .play {
   display: flex;
@@ -100,3 +119,8 @@
     max-height: 400px;
   }
 }
+
+/* Utilities Styling */
+.googleBlue { color: #4285F4; }
+.googleRed { color: #DB4437; }
+.googleYellow { color: #F4B400; }

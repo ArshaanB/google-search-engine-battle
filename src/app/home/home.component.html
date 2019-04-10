@@ -1,6 +1,28 @@
 <div class="container">
+  <div class="startScreen" *ngIf="!playClickedFlag">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <p class="lead">
+          You're about to play <span class="googleBlue">Search</span>
+          <span class="googleRed">Engine</span>
+          <span class="googleYellow">Battle</span>.
+        </p>
+        <p class="lead">
+          Objective: You will be shown 2 popular search terms, and have to
+          select the more popular one.
+        </p>
+        <p class="lead">
+          It's quite a fun game, lets see how you do!
+        </p>
+      </div>
+    </div>
+  </div>
   <div class="endscreen" *ngIf="showScoreFlag">
-    <h2>Score: {{ score }}</h2>
+  <!-- <div class="endscreen"> -->
+    <!-- <h2>Score: {{ score }}</h2> -->
+    <button type="button" class="btn btn-dark mb-2">
+      Score <span class="badge badge-light">{{ score }}</span>
+    </button>
     <h3 [innerHTML]="endscreenMessage()"></h3>
     <br />
     <h3 *ngIf="showScoreFlag && isUserLoggedIn()">
@@ -33,11 +55,11 @@
     <div class="searchterms">
       <div id="term1">
         <h2>{{ term1.name }}</h2>
-        <img [src]="myURL(1, t)" #t/>
+        <img [src]="myURL(1, t)" #t />
       </div>
       <div id="term2">
         <h2>{{ term2.name }}</h2>
-        <img [src]="myURL(2, u)" #u/>
+        <img [src]="myURL(2, u)" #u />
       </div>
     </div>
 
@@ -80,7 +102,9 @@
           </div>
         </div>
         <div>
-          <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!f.valid">
+            Submit
+          </button>
         </div>
       </div>
     </form>

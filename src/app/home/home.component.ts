@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   winningTerm = "";
   showPlayButtonFlag = true;
   showScoreFlag = false;
+  playClickedFlag = false;
   score = 0;
   lives = 3;
   
@@ -146,13 +147,14 @@ export class HomeComponent implements OnInit {
     this.score = 0;
     this.togglePlayButtonFlag();
     this.showScoreFlag = false;
+    this.playClickedFlag = true;
   }
 
   // Small variations in messages as per user's end score.
   endscreenMessage() {
     if (this.score <= 5) return "Meh, I know you can do better than that.";
     else if (this.score <= 10) return "That's pretty good, but even my grandma got 9.";
-    else return "Dang, you've got skill, you single?";
+    else return "Damn, ngl, you've got skill.";
   }
 
   isUserLoggedIn() {
