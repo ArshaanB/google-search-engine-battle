@@ -1,12 +1,14 @@
-.jumbotron {
+.startscreen .jumbotron {
   padding: 2.5rem 1rem;
 }
 
+/* endscreen section */
 .endscreen {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: -3rem;
+  margin-bottom: -1rem;
+  margin-top: 2rem;
 }
 .endscreen button {
   padding: 0.8rem 1.6rem;
@@ -24,7 +26,6 @@
   align-items: center;
 }
 .play > button {
-  margin-top: 1rem;
   padding: 0.70rem 2.2rem;
   width: 60%;
   font-size: 1.25rem;
@@ -72,11 +73,6 @@
 .game .decision .choices button {
   margin: 0 2rem;
   padding: 0.70rem 2.2rem;
-}
-
-/* endscreen section */
-.endscreen {
-  margin-top: 3rem;
 }
 
 /* submitScore section */

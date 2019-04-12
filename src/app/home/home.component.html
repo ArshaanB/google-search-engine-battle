@@ -1,4 +1,4 @@
-<div class="startScreen" *ngIf="!playClickedFlag">
+<div class="startscreen" *ngIf="!playClickedFlag">
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
       <p class="lead">
@@ -18,17 +18,15 @@
 </div>
 <div class="container">
   <div class="endscreen" *ngIf="showScoreFlag">
-  <!-- <div class="endscreen"> -->
-    <!-- <h2>Score: {{ score }}</h2> -->
     <button type="button" class="btn btn-dark mb-2">
       Score <span class="badge badge-light">{{ score }}</span>
     </button>
-    <h3 [innerHTML]="endscreenMessage()"></h3>
+    <p class="lead" [innerHTML]="endscreenMessage()"></p>
     <br />
-    <h3 *ngIf="showScoreFlag && isUserLoggedIn()">
+    <p class="lead mb-2" *ngIf="showScoreFlag && isUserLoggedIn()">
       See where you stack up on the leaderboard! Submit your score with a
       personal handle below.
-    </h3>
+    </p>
     <hr />
   </div>
   <div class="play">
@@ -42,7 +40,7 @@
     </button>
   </div>
 
-  <div class="game" *ngIf="!showPlayButtonFlag">
+  <div class="game mt-3" *ngIf="!showPlayButtonFlag">
     <div class="score">
       <p>
         <span class="border border-success">Score: {{ score }}</span>
