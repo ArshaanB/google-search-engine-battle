@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="display-4">Register</div>
+  <div class="display-4 mt-3">Register</div>
   <form #f="ngForm" (ngSubmit)="onSubmit(f)">
     <div class="form-group">
       <label for="exampleInputEmail1">Email Address</label>
@@ -34,7 +34,7 @@
     </button>
   </form>
 
-  <div class="alert alert-success mt-3" role="alert" *ngIf="showSuccessMessage">
-    Thanks for registering! Now please login above.
+  <div class="alert alert-danger mt-3" role="alert" *ngIf="showFailureMessage">
+    Invalid email (it may have already been registered).
   </div>
 </div>

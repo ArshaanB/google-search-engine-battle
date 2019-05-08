@@ -13,12 +13,12 @@ export class AuthenticationService {
   constructor(public httpClient: HttpClient) {}
 
   registerUser(email, password) {
-    firebase
+    return firebase
       .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .catch(err => {
-        console.log(err);
-      });
+      .createUserWithEmailAndPassword(email, password);
+      // .catch(err => {
+      //   console.log(err);
+      // });
   }
 
   loginUser(email, password) {

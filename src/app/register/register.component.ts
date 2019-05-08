@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { AuthenticationService } from '../authentication.service';
 
@@ -9,16 +10,25 @@ import { AuthenticationService } from '../authentication.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  showSuccessMessage = false;
+  showFailureMessage = false;
 
-  constructor(public authenticationService: AuthenticationService) { }
+  constructor(
+    public authenticationService: AuthenticationService,
+    public router: Router
+    ) { }
 
   ngOnInit() {
   }
 
   onSubmit(form: NgForm) {
-    this.showSuccessMessage = true;
-    this.authenticationService.registerUser(form.value.email, form.value.password);
+    this.authenticationService.registerUser(form.value.email, form.value.password)
+    .then(msg => {
+      this.authenticationService.loginUser(form.value.email, form.value.password);
+      this.router.navigate(['/']);
+    })
+    .catch(err => {
+      this.showFailureMessage = true;
+    });
   }
 
 }
