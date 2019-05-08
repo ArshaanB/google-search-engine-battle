@@ -26,10 +26,10 @@
     <div class="pt-3" *ngIf="!showPlayButtonFlag">
       <div class="score">
         <p>
-          <span class="border border-success">Score: {{ score }}</span>
+          <span class="text-success">Score: {{ score }}</span>
         </p>
         <p>
-          <span class="border border-warning">Lives: {{ lives }}</span>
+          <span class="text-info">Lives: {{ lives }}</span>
         </p>
       </div>
 
@@ -63,9 +63,7 @@
 <div class="endscreen" *ngIf="showScoreFlag">
   <div class="container">
     <div class="scoreboard">
-      <button type="button" class="btn btn-dark mb-2 scorebutton">
-        Score <span class="badge badge-light">{{ score }}</span>
-      </button>
+      <div><span class="badge badge-light">{{ score }}</span></div>
       <p class="lead mt-2" [innerHTML]="endscreenMessage()"></p>
       <p class="lead mb-2" *ngIf="isUserLoggedIn()">
         See where you stack up on the leaderboard! Submit your score with a
@@ -108,7 +106,7 @@
         <button type="button" class="btn btn-primary" (click)="playGame()" *ngIf="showPlayButtonFlag"> Play again! </button>
     </div>
     <div class="scoreAlert alert alert-info mt-3" role="alert" *ngIf="!isUserLoggedIn()">
-      Did you know you can submit your score and see how you stack up against
+      <strong>Did you know</strong> you can submit your score and see how you stack up against
       other competitors? All you need to do is login and play the game!
     </div>
   </div>

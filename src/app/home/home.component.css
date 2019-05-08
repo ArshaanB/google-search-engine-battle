@@ -36,7 +36,7 @@
 }
 .gamescreen .score p {
   padding: 0 1.5rem;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
 }
 .gamescreen .score span.border.border-success,
 .gamescreen .score span.border.border-warning {
@@ -65,13 +65,9 @@
   margin-bottom: -1rem;
   margin-top: 2rem;
 }
-.endscreen .container .scoreboard button {
+.endscreen .container .scoreboard span {
   padding: 0.8rem 1.6rem;
   font-size: 1.6rem;
-}
-.endscreen .container .scoreboard button:hover {
-  cursor: default;
-  background-color: #343a40;
 }
 .endscreen .container .submitScore {
   display: flex;
