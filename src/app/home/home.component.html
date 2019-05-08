@@ -23,7 +23,7 @@
 
 <div class="gamescreen">
   <div class="container">
-    <div class="mt-3" *ngIf="!showPlayButtonFlag">
+    <div class="pt-3" *ngIf="!showPlayButtonFlag">
       <div class="score">
         <p>
           <span class="border border-success">Score: {{ score }}</span>
@@ -47,7 +47,7 @@
       <hr />
 
       <div class="decision">
-        <p>Which do you think has a higher search volume?</p>
+        <p>Which term do you think is more popular?</p>
         <div class="choices">
           <button type="button" class="btn btn-secondary" (click)="onAnswer(1)">
             {{ term1.name }}
