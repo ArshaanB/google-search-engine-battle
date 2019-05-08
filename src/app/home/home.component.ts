@@ -25,20 +25,20 @@ export class HomeComponent implements OnInit {
   playClickedFlag = false;
   score = 0;
   lives = 3;
-  
-  constructor(public httpClient: HttpClient, 
+
+  constructor(public httpClient: HttpClient,
               public authenticationService: AuthenticationService,
               public router: Router) {
   }
-  
+
   ngOnInit() {
     // Acquires all search data and stores locally.
     this.myObservable = this.httpClient.get(
       'https://cors-anywhere.herokuapp.com/https://ahrefs.com/blog/top-google-searches/',
       { responseType: 'text' }
       );
-    this.myObservable.subscribe( 
-      (res) => { 
+    this.myObservable.subscribe(
+      (res) => {
         $(res).find('tbody > tr')
         .each(
           (index, element) => {
@@ -56,7 +56,7 @@ export class HomeComponent implements OnInit {
     let myTerm = this.term1;
     if (term === 2) myTerm = this.term2;
 
-    // Working solution below, but a problem with Angular calling myURL 
+    // Working solution below, but a problem with Angular calling myURL
     // infinitely is stopping me from using it.
     // fetch("https://source.unsplash.com/1600x900/?" + myTerm.name)
     //   .then(res => {
@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit {
 
     if (myTerm.name == "hotmail" ||
         myTerm.name == "roblox" ||
-        myTerm.name == "zillow" || 
+        myTerm.name == "zillow" ||
         myTerm.name == "indeed" ||
         myTerm.name == "ebay" ||
         myTerm.name == "yahoo" ||
@@ -87,7 +87,7 @@ export class HomeComponent implements OnInit {
           return "https://source.unsplash.com/random/1600x900";
     }
     return ("https://source.unsplash.com/1600x900/?" + myTerm.name);
-    // Keep below for if primary image source fails. Bing is also another 
+    // Keep below for if primary image source fails. Bing is also another
     // complete alternative.
     // return ("https://source.unsplash.com/featured/?" + term);
   }
@@ -118,7 +118,7 @@ export class HomeComponent implements OnInit {
     this.showPlayButtonFlag = !this.showPlayButtonFlag;
   }
 
-  // Ensures score correctly reflects choices made by user. If the game is over 
+  // Ensures score correctly reflects choices made by user. If the game is over
   // (since lives hits 0) show correct screen.
   onAnswer(answer: number) {
     if ((answer == 1) && (this.winningTerm == this.term1.name)) {
@@ -135,7 +135,7 @@ export class HomeComponent implements OnInit {
       this.togglePlayButtonFlag();
       this.showScoreFlag = true;
     }
-    // Especially useful on smaller devices, brings the screen back to the top 
+    // Especially useful on smaller devices, brings the screen back to the top
     // thus saving the user time wasted in scrolling.
     window.scroll(0,0);
   }

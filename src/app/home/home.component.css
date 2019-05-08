@@ -1,116 +1,114 @@
+/* startscreen section */
 .startscreen .jumbotron {
   padding: 2.5rem 1rem;
+  height: 100vh;
+  margin-bottom: 0rem;
+}
+/* play section */
+.startscreen .play {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.startscreen .play > button {
+  padding: 0.70rem 2.2rem;
+  width: 60%;
+  font-size: 1.25rem;
+}
+
+/* gamescreen section */
+.gamescreen .searchterms {
+  display: flex;
+  justify-content: space-around;
+}
+.gamescreen .searchterms #term1,
+.gamescreen .searchterms #term2 {
+  text-align: center;
+}
+.gamescreen .searchterms img {
+  border-radius: 1rem 1rem;
+  width: 400px;
+  max-height: 400px;
+}
+.gamescreen .score {
+  display: flex;
+  justify-content: center;
+}
+.gamescreen .score p {
+  padding: 0 1.5rem;
+  font-size: 1.5rem;
+}
+.gamescreen .score span.border.border-success,
+.gamescreen .score span.border.border-warning {
+  border-radius: 1rem 1rem;
+  padding: 0.5rem 1rem;
+}
+.gamescreen .decision {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+}
+.gamescreen .decision p {
+  text-align: center;
+}
+.gamescreen .decision .choices button {
+  margin: 0 2rem;
+  padding: 0.70rem 2.2rem;
 }
 
 /* endscreen section */
-.endscreen {
+.endscreen .container .scoreboard {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: -1rem;
   margin-top: 2rem;
 }
-.endscreen button {
+.endscreen .container .scoreboard button {
   padding: 0.8rem 1.6rem;
   font-size: 1.6rem;
 }
-.endscreen button:hover {
+.endscreen .container .scoreboard button:hover {
   cursor: default;
   background-color: #343a40;
 }
-
-/* play section */
-.play {
+.endscreen .container .submitScore {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.endscreen .container .submitScore form div.input-group input {
+  margin-right: 1rem;
+}
+.endscreen .container .play {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.play > button {
+.endscreen .container .play > button {
   padding: 0.70rem 2.2rem;
   width: 60%;
   font-size: 1.25rem;
 }
 
-/* game section */
-.game .searchterms {
-  display: flex;
-  justify-content: space-around;
-}
-.game .searchterms #term1,
-.game .searchterms #term2 {
-  text-align: center;
-}
-.game .searchterms img {
-  border-radius: 1rem 1rem;
-  width: 400px;
-  max-height: 400px;
-}
-.game .score {
-  display: flex;
-  justify-content: center;
-}
-.game .score p {
-  padding: 0 1.5rem;
-  font-size: 1.5rem;
-}
-.game .score span.border.border-success {
-  border-radius: 1rem 1rem;
-  padding: 0.5rem 1rem;
-}
-.game .score span.border.border-warning {
-  border-radius: 1rem 1rem;
-  padding: 0.5rem 1rem;
-}
-.game .decision {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* justify-content: center; */
-}
-.game .decision p {
-  text-align: center;
-}
-.game .decision .choices button {
-  margin: 0 2rem;
-  padding: 0.70rem 2.2rem;
-}
-
-/* submitScore section */
-.submitScore {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.submitScore form div.input-group input {
-  margin-right: 1rem;
-}
-
-/* scoreAlert section */
-.scoreAlert {
-  /* margin-top: 2rem; */
-}
-
 /* Media Queries */
 @media(max-width: 992px) {
-  .play { margin-bottom: 1rem; }
-  .game .searchterms { flex-direction: column; }
+  .startscreen .play { margin-bottom: 1rem; }
+  .gamescreen .searchterms { flex-direction: column; }
 }
 @media(max-width: 480px) {
-  nav {
-    flex-direction: column;
-    align-items: center;
-  }
-  .decision div.choices { 
+  .decision div.choices {
     display: flex;
     flex-direction: column;
   }
-  .game .decision .choices button {
+  .gamescreen .decision .choices button {
     margin: 0.5rem 0rem;
   }
 }
 @media(max-width: 420px) {
-  .game .searchterms img {
+  .gamescreen .searchterms img {
     width: 90%;
     max-height: 400px;
   }
