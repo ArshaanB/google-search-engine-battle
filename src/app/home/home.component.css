@@ -79,7 +79,7 @@
   align-items: center;
   justify-content: center;
 }
-.endscreen .container .submitScore form div.input-group input {
+.endscreen .container .submitScore input {
   margin-right: 1rem;
 }
 .endscreen .container .play {
@@ -99,12 +99,15 @@
   .gamescreen .searchterms { flex-direction: column; }
 }
 @media(max-width: 480px) {
-  .decision div.choices {
+  .gamescreen .decision div.choices {
     display: flex;
     flex-direction: column;
   }
   .gamescreen .decision .choices button {
     margin: 0.5rem 0rem;
+  }
+  .endscreen .container .submitScore input {
+    width: 7rem;
   }
 }
 @media(max-width: 420px) {
