@@ -4,6 +4,7 @@ import { AuthenticationService } from './authentication.service';
 
 import * as firebase from "firebase";
 import { HttpClient } from '@angular/common/http';
+import { SearchDataService } from './search-data.service';
 
 @Component({
   selector: "app-root",
@@ -11,9 +12,12 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent implements OnInit {
-  
-  constructor(public authenticationService: AuthenticationService,
-              public httpClient: HttpClient) {}
+
+  constructor(
+    public authenticationService: AuthenticationService,
+    public httpClient: HttpClient,
+    public searchDataService: SearchDataService
+    ) {}
 
   ngOnInit() {
     // Initialize Firebase
@@ -26,6 +30,8 @@ export class AppComponent implements OnInit {
       messagingSenderId: "246186518610"
     };
     firebase.initializeApp(config);
+    // Grabbing Data
+    this.searchDataService.getTermsRequest();
   }
 
   userLoggedIn() {

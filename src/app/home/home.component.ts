@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
 
 import * as $ from 'jquery';
+import { SearchDataService } from '../search-data.service';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,7 @@ export class HomeComponent implements OnInit {
   scoreSubmitObservable;
   searchTerms = [];
   searchTermsVolume = [];
+  searchTermsURL = [];
   term1: {name: string, volume: number};
   term2: {name: string, volume: number};
   winningTerm = "";
@@ -28,33 +30,29 @@ export class HomeComponent implements OnInit {
 
   constructor(public httpClient: HttpClient,
               public authenticationService: AuthenticationService,
-              public router: Router) {
+              public router: Router,
+              public searchDataService: SearchDataService) {
   }
 
   ngOnInit() {
-    // Acquires all search data and stores locally.
-    this.myObservable = this.httpClient.get(
-      'https://cors-anywhere.herokuapp.com/https://ahrefs.com/blog/top-google-searches/',
-      { responseType: 'text' }
-      );
-    this.myObservable.subscribe(
-      (res) => {
-        $(res).find('tbody > tr')
-        .each(
-          (index, element) => {
-            if (index < 99) {
-              this.searchTerms.push($(element).find('td:nth-child(2)').text());
-              this.searchTermsVolume.push($(element).find('td:nth-child(3)').text());
-            }
-          }
-        )
-      });
+    this.httpClient.get<{ message: string, terms: any }>("http://localhost:3000/api/terms").subscribe(someArg => {
+      for (let i=0; i<99; i++) {
+        this.searchTerms.push(someArg.terms[i].title);
+        this.searchTermsVolume.push(someArg.terms[i].volume);
+        this.searchTermsURL.push(someArg.terms[i].imageURL);
+      }
+    }, err => {
+      console.log("Failure");
+    });
   }
 
   // Produces the URL for the img src attribute.
   myURL(term: number, t: HTMLInputElement) {
     let myTerm = this.term1;
     if (term === 2) myTerm = this.term2;
+
+    let idx = this.searchTerms.indexOf(myTerm.name);
+    return this.searchTermsURL[idx];
 
     // Working solution below, but a problem with Angular calling myURL
     // infinitely is stopping me from using it.
@@ -67,27 +65,7 @@ export class HomeComponent implements OnInit {
     //   }
     // });
 
-    if (myTerm.name == "hotmail" ||
-        myTerm.name == "roblox" ||
-        myTerm.name == "zillow" ||
-        myTerm.name == "indeed" ||
-        myTerm.name == "ebay" ||
-        myTerm.name == "yahoo" ||
-        myTerm.name == "xfinity" ||
-        myTerm.name == "walgreens" ||
-        myTerm.name == "traductor" ||
-        myTerm.name == "pof" ||
-        myTerm.name == "123movies" ||
-        myTerm.name == "mapquest" ||
-        myTerm.name == "aol" ||
-        myTerm.name == "gamestop" ||
-        myTerm.name == "groupon" ||
-        myTerm.name == "bing" ||
-        myTerm.name == "turbotax" ||
-        myTerm.name == "kohls") {
-          return "https://source.unsplash.com/random/1600x900";
-    }
-    return ("https://source.unsplash.com/1600x900/?" + myTerm.name);
+    // return ("https://source.unsplash.com/1600x900/?" + myTerm.name);
     // Keep below for if primary image source fails. Bing is also another
     // complete alternative.
     // return ("https://source.unsplash.com/featured/?" + term);
@@ -155,7 +133,7 @@ export class HomeComponent implements OnInit {
   endscreenMessage() {
     if (this.score <= 5) return "Meh, I know you can do better than that.";
     else if (this.score <= 10) return "That's pretty good, but even my grandma got 9.";
-    else return "Damn, ngl, you've got skill.";
+    else return "Damn, not gonna lie, you've got skill.";
   }
 
   isUserLoggedIn() {
@@ -171,3 +149,90 @@ export class HomeComponent implements OnInit {
     }, 500);
   }
 }
+
+
+// Used to setup DB for the first time.
+// setTimeout(() => {
+//   let urlArr = [];
+//   for (let i=0; i<this.searchTerms.length; i++) {
+//     let myTerm = this.searchTerms[i];
+//     if (myTerm == "hotmail" ||
+//     myTerm == "roblox" ||
+//     myTerm == "zillow" ||
+//     myTerm == "indeed" ||
+//     myTerm == "ebay" ||
+//     myTerm == "yahoo" ||
+//     myTerm == "xfinity" ||
+//     myTerm == "walgreens" ||
+//     myTerm == "traductor" ||
+//     myTerm == "pof" ||
+//     myTerm == "123movies" ||
+//     myTerm == "mapquest" ||
+//     myTerm == "aol" ||
+//     myTerm == "gamestop" ||
+//     myTerm == "groupon" ||
+//     myTerm == "bing" ||
+//     myTerm == "turbotax" ||
+//     myTerm == "kohls") {
+//       urlArr.push("https://source.unsplash.com/random/1600x900");
+//     } else {
+//       urlArr.push("https://source.unsplash.com/1600x900/?" + myTerm);
+//     }
+//   }
+//   for (let i=0; i<this.searchTerms.length; i++) {
+//     let vol = this.searchTermsVolume[i];
+//     vol = vol.replace(/,/g, "");
+//     let obj = {
+//       title: this.searchTerms[i],
+//       volume: vol,
+//       imageURL: urlArr[i]
+//     }
+//     this.httpClient.post("http://localhost:3000/api/terms", obj)
+//     .subscribe(someArg => {
+//       // console.log(someArg);
+//     }, err => {
+//       console.log("Failure");
+//     });
+//   }
+// }, 5000);
+
+// Used for scraping the content initially.
+    // Acquires all search data and stores locally.
+    // this.myObservable = this.httpClient.get(
+    //   'https://cors-anywhere.herokuapp.com/https://ahrefs.com/blog/top-google-searches/',
+    //   { responseType: 'text' }
+    //   );
+    // this.myObservable.subscribe(
+    //   (res) => {
+    //     $(res).find('tbody > tr')
+    //     .each(
+    //       (index, element) => {
+    //         if (index < 99) {
+    //           this.searchTerms.push($(element).find('td:nth-child(2)').text());
+    //           this.searchTermsVolume.push($(element).find('td:nth-child(3)').text());
+    //         }
+    //       }
+    //     )
+    //   });
+
+// Old solution for picking out URL for faulty terms.
+// if (myTerm.name == "hotmail" ||
+    //     myTerm.name == "roblox" ||
+    //     myTerm.name == "zillow" ||
+    //     myTerm.name == "indeed" ||
+    //     myTerm.name == "ebay" ||
+    //     myTerm.name == "yahoo" ||
+    //     myTerm.name == "xfinity" ||
+    //     myTerm.name == "walgreens" ||
+    //     myTerm.name == "traductor" ||
+    //     myTerm.name == "pof" ||
+    //     myTerm.name == "123movies" ||
+    //     myTerm.name == "mapquest" ||
+    //     myTerm.name == "aol" ||
+    //     myTerm.name == "gamestop" ||
+    //     myTerm.name == "groupon" ||
+    //     myTerm.name == "bing" ||
+    //     myTerm.name == "turbotax" ||
+    //     myTerm.name == "kohls") {
+    //       return "https://source.unsplash.com/random/1600x900";
+    // }
