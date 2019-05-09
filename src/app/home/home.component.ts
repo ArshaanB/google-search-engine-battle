@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.httpClient.get<{ message: string, terms: any }>("http://localhost:3000/api/terms").subscribe(someArg => {
+    this.httpClient.get<{ message: string, terms: any }>("http://searchenginebattle-env.uiqyfqqem2.us-east-2.elasticbeanstalk.com/api/terms").subscribe(someArg => {
       for (let i=0; i<99; i++) {
         this.searchTerms.push(someArg.terms[i].title);
         this.searchTermsVolume.push(someArg.terms[i].volume);

@@ -1,0 +1,14 @@
+{
+  "name": "google-search-engine-battle",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "core-js": "^2.5.4",
+    "debug": "^4.1.1",
+    "express": "^4.16.4",
+    "http": "0.0.0",
+    "mongoose": "^5.5.6",
+    "path": "^0.12.7"
+  }
+}

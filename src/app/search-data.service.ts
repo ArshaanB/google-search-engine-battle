@@ -12,7 +12,7 @@ export class SearchDataService {
   constructor(public httpClient: HttpClient) { }
 
   getTermsRequest() {
-    this.httpClient.get<{ message: string, terms: any }>("http://localhost:3000/api/terms").subscribe(someArg => {
+    this.httpClient.get<{ message: string, terms: any }>("http://searchenginebattle-env.uiqyfqqem2.us-east-2.elasticbeanstalk.com/api/terms").subscribe(someArg => {
       this.termsArray = someArg.terms;
     }, err => {
       console.log("Failure");
