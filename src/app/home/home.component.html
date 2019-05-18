@@ -5,12 +5,12 @@
         The objective of this game is to choose the more popular query out of the 2 queries presented.
       </p>
       <p class="lead text-white">
-        For example, when given the queries "facebook" and "macys" which do you think is google searched for more often? If you answered "facebook" you would be correct!
+        For example, when given the queries "facebook" and "macys" which do you think is searched for more often? If you answered "facebook" you would be correct!
       </p>
       <p class="lead text-white">
         Click the play button below to get started. It's quite a fun game, lets see how you do!
       </p>
-      <div class="alert alert-info" role="alert">
+      <div class="alert alert-info" role="alert" *ngIf="!isUserLoggedIn()">
         <strong>Did you know</strong> you can submit your score after the game and see how you stack up against other competitors? All you need to do is register/login and play the game!
       </div>
       <div class="play">
