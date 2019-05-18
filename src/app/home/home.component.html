@@ -1,36 +1,37 @@
 <div class="startscreen" *ngIf="!playClickedFlag">
-  <div class="jumbotron jumbotron-fluid">
+  <div class="jumbotron jumbotron-fluid bg-secondary">
     <div class="container">
-      <p class="lead">
-        You're about to play
-        <span class="googleBlue">Search</span>
-        <span class="googleRed">Engine</span>
-        <span class="googleYellow">Battle</span>.
+      <p class="lead text-white">
+        The objective of this game is to choose the more popular query out of the 2 queries presented.
       </p>
-      <p class="lead">
-        Objective: You will be shown 2 popular search terms, and have to
-        select the more popular one.
+      <p class="lead text-white">
+        For example, when given the queries "facebook" and "macys" which do you think is google searched for more often? If you answered "facebook" you would be correct!
       </p>
-      <p class="lead">
-        It's quite a fun game, lets see how you do!
+      <p class="lead text-white">
+        Click the play button below to get started. It's quite a fun game, lets see how you do!
       </p>
+      <div class="alert alert-info" role="alert">
+        <strong>Did you know</strong> you can submit your score after the game and see how you stack up against other competitors? All you need to do is register/login and play the game!
+      </div>
       <div class="play">
-          <button type="button" class="btn btn-primary" (click)="playGame()" *ngIf="showPlayButtonFlag"> Play! </button>
+          <button type="button" class="btn text-light" (click)="playGame()" *ngIf="showPlayButtonFlag"> Play! </button>
       </div>
     </div>
   </div>
 </div>
 
-<div class="gamescreen">
+<div class="gamescreen text-white">
   <div class="container">
     <div class="pt-3" *ngIf="!showPlayButtonFlag">
       <div class="score">
-        <p>
-          <span class="text-success">Score: {{ score }}</span>
-        </p>
-        <p>
-          <span class="text-info">Lives: {{ lives }}</span>
-        </p>
+        <div class="d-flex flex-column align-items-center">
+          <p class="smallTitle">Score</p>
+          <p class="bigValue">{{ score }}</p>
+        </div>
+        <div class="d-flex flex-column align-items-center">
+          <p class="smallTitle">Lives</p>
+          <p class="bigValue">{{ lives }}</p>
+        </div>
       </div>
 
       <div class="searchterms">
@@ -49,10 +50,10 @@
       <div class="decision">
         <p>Which term do you think is more popular?</p>
         <div class="choices">
-          <button type="button" class="btn btn-secondary" (click)="onAnswer(1)">
+          <button type="button" class="btn btn-light" (click)="onAnswer(1)">
             {{ term1.name }}
           </button>
-          <button type="button" class="btn btn-secondary" (click)="onAnswer(2)">
+          <button type="button" class="btn btn-light" (click)="onAnswer(2)">
             {{ term2.name }}
           </button>
         </div>
@@ -64,8 +65,8 @@
   <div class="container">
     <div class="scoreboard">
       <div><span class="badge badge-light">{{ score }}</span></div>
-      <p class="lead mt-2" [innerHTML]="endscreenMessage()"></p>
-      <p class="lead mb-2" *ngIf="isUserLoggedIn()">
+      <p class="lead mt-2 text-white" [innerHTML]="endscreenMessage()"></p>
+      <p class="lead mb-2 text-white" *ngIf="isUserLoggedIn()">
         See where you stack up on the leaderboard! Submit your score with a
         username below.
       </p>
@@ -106,8 +107,7 @@
         <button type="button" class="btn btn-primary" (click)="playGame()" *ngIf="showPlayButtonFlag"> Play again! </button>
     </div>
     <div class="scoreAlert alert alert-info mt-3" role="alert" *ngIf="!isUserLoggedIn()">
-      <strong>Did you know</strong> you can submit your score and see how you stack up against
-      other competitors? All you need to do is login and play the game!
+      <strong>Did you know</strong> you can submit your score and see how you stack up against other competitors? All you need to do is login and play the game!
     </div>
   </div>
 </div>

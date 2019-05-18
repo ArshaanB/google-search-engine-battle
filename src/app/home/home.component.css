@@ -11,9 +11,10 @@
   align-items: center;
 }
 .startscreen .play > button {
-  padding: 0.70rem 2.2rem;
-  width: 60%;
+  padding: 1rem 2.2rem;
+  width: 30%;
   font-size: 1.25rem;
+  background-color: #4285F4;
 }
 
 /* gamescreen section */
@@ -32,17 +33,20 @@
 }
 .gamescreen .score {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
-.gamescreen .score p {
-  padding: 0 1.5rem;
-  font-size: 1.75rem;
+.gamescreen .score > div {
+  margin-right: 0.5rem;
 }
-.gamescreen .score span.border.border-success,
-.gamescreen .score span.border.border-warning {
-  border-radius: 1rem 1rem;
-  padding: 0.5rem 1rem;
+.gamescreen .score .smallTitle {
+  font-size: 0.75rem;
+  margin-bottom: 0rem;
 }
+.gamescreen .score .bigValue {
+  font-size: 2.2rem;
+  margin-top: -0.9rem;
+}
+
 .gamescreen .decision {
   display: flex;
   flex-direction: column;

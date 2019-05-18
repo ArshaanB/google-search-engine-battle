@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container text-white">
   <div class="display-4 mt-3">Register</div>
   <form #f="ngForm" (ngSubmit)="onSubmit(f)">
     <div class="form-group">
@@ -29,7 +29,7 @@
         password
       />
     </div>
-    <button type="submit" class="btn btn-primary" [disabled]="!f.valid">
+    <button type="submit" class="btn btn-primary align-items-end" [disabled]="!f.valid">
       Register
     </button>
   </form>
