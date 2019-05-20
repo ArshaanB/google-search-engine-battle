@@ -36,12 +36,12 @@
 
       <div class="searchterms">
         <div id="term1">
-          <h2>{{ term1.name }}</h2>
-          <img [src]="myURL(1, t)" #t />
+          <h2 (click)="onAnswer(1)">{{ term1.name }}</h2>
+          <img (click)="onAnswer(1)" [src]="myURL(1, t)" #t />
         </div>
         <div id="term2">
-          <h2>{{ term2.name }}</h2>
-          <img [src]="myURL(2, u)" #u />
+          <h2 (click)="onAnswer(2)">{{ term2.name }}</h2>
+          <img (click)="onAnswer(2)" [src]="myURL(2, u)" #u />
         </div>
       </div>
 
